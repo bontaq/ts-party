@@ -1,8 +1,15 @@
+const webpack = require("webpack");
+const path = require("path");
+
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: [
+        "react-hot-loader/patch",
+        "./src/index.tsx",
+    ],
     output: {
+        path: path.join(__dirname, 'dist'),
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        publicPath: "/static/",
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -10,16 +17,32 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
-    module: {
-        rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+    plugins: [
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 
+    module: {
+        loaders: [
+            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
+            {
+                test: /\.tsx?$/,
+                loaders: [
+                    "react-hot-loader/webpack",
+                    "awesome-typescript-loader"
+                ],
+                exclude: path.resolve(__dirname, 'node_modules'),
+                include: path.resolve(__dirname, "src"),
+            },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
+            }
         ]
     },
 
@@ -31,4 +54,8 @@ module.exports = {
         "react": "React",
         "react-dom": "ReactDOM"
     },
+    devServer: {
+        hot: true
+    }
+
 };
