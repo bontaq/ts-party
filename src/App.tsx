@@ -3,15 +3,17 @@ import SearchBar from './components/SearchBar';
 import PreviousSearches from './components/PreviousSearches';
 
 interface IAppProps {
-  value: any
+  searchValue: any
+  updateSearchValue: (a: string) => any
 }
 
 export default class App extends React.Component<IAppProps, any> {
   render() {
+    console.info(this.props.searchValue)
     return (
       <div>
-        <SearchBar />
-        <span>{this.props.value}</span>
+        <SearchBar updateSearchValue={this.props.updateSearchValue} />
+        <span>{this.props.searchValue}</span>
         <PreviousSearches />
       </div>
     )

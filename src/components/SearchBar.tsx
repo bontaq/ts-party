@@ -4,11 +4,18 @@ import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
 
-export default class SearchBar extends React.Component<{}, {}> {
+interface ISearchBarProps {
+  updateSearchValue: (a: string) => any
+}
+
+export default class SearchBar extends React.Component<ISearchBarProps, {}> {
   render() {
+    console.info(this.props)
     return (
       <div>
-        <Input />
+        <Input onChange={(event: React.ChangeEvent<any>) => {
+          this.props.updateSearchValue(event.currentTarget.value)
+        }} />
         <Button>Search</Button>
       </div>
     )

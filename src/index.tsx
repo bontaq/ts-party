@@ -19,13 +19,14 @@ const store = createStore(
 
 const rootEl = document.getElementById("root");
 
-const action = (type: any) => store.dispatch({ type })
-
-console.info(store.getState());
+const action = (type: any, payload = {}) => store.dispatch({ type, ...payload })
 
 const render = () => ReactDOM.render(
   <AppContainer>
-    <App value={store.getState().search} />
+    <App
+      searchValue={store.getState().search}
+      updateSearchValue={(text: string) => action('UPDATE_SEARCH', { text })}
+    />
   </AppContainer>,
   rootEl
 )
