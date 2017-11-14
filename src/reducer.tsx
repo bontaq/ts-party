@@ -16,7 +16,7 @@ export default (state = initialState, action: action) => {
   console.info(state)
   switch (action.type) {
     case 'UPDATE_SEARCH': {
-      return { search: action.text, ...state }
+      return { ...state, search: action.text }
     }
   }
   return state
