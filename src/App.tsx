@@ -4,10 +4,9 @@ import SearchBar from './components/SearchBar';
 import PreviousSearches from './components/PreviousSearches';
 
 interface IAppProps {
-  //store: any
-  //  searchValue: any
   updateSearchValue: (a: string) => any
-  search: any
+  requestSearch: () => null
+  search: string
 }
 
 class App extends React.Component<IAppProps, any> {
@@ -15,7 +14,10 @@ class App extends React.Component<IAppProps, any> {
     console.info('renders', this.props.search);
     return (
       <div>
-        <SearchBar updateSearchValue={this.props.updateSearchValue} />
+        <SearchBar
+          updateSearchValue={this.props.updateSearchValue}
+          requestSearch={this.props.requestSearch}
+        />
         <PreviousSearches />
       </div>
     )
@@ -32,6 +34,10 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     updateSearchValue: (str: string) => {
       dispatch({ type: 'UPDATE_SEARCH', text: str })
+    },
+    requestSearch: () => {
+      console.info('search requested')
+      dispatch({ type: 'REQUEST_SEARCH' })
     }
   }
 }

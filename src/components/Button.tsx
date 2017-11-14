@@ -1,4 +1,11 @@
+import * as React from 'react';
 import styled from 'styled-components';
+
+export const Button2: React.StatelessComponent<{
+  onClick: (e: any) => null
+}> = props => (
+  <button {...props} />
+)
 
 const Button = styled.button`
   border-radius: 3px;

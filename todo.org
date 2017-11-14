@@ -1,0 +1,3 @@
+* TODO push search into stack
+* TODO display previous searches
+* TODO on click, display results

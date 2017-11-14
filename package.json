@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-redux": "^5.0.12",
+    "isomorphic-fetch": "^2.2.1",
+    "ramda": "^0.25.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
