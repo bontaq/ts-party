@@ -1,21 +1,36 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import SearchBar from './components/SearchBar';
 import PreviousSearches from './components/PreviousSearches';
 
 interface IAppProps {
-  searchValue: any
+  //store: any
+  //  searchValue: any
   updateSearchValue: (a: string) => any
+  search: any
 }
 
-export default class App extends React.Component<IAppProps, any> {
+class App extends React.Component<IAppProps, any> {
   render() {
-    console.info(this.props.searchValue)
     return (
       <div>
         <SearchBar updateSearchValue={this.props.updateSearchValue} />
-        <span>{this.props.searchValue}</span>
         <PreviousSearches />
       </div>
     )
   }
 }
+
+const mapStateToProps = (state: any) => {
+  return {
+    search: state.search
+  }
+}
+
+const mapDispatchToProps = (f: any) => {
+  return {
+    updateSearchValue: (str: string) => { }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

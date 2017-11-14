@@ -24,8 +24,6 @@ const action = (type: any, payload = {}) => store.dispatch({ type, ...payload })
 const render = () => ReactDOM.render(
   <AppContainer>
     <App
-      searchValue={store.getState().search}
-      updateSearchValue={(text: string) => action('UPDATE_SEARCH', { text })}
     />
   </AppContainer>,
   rootEl
