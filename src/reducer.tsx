@@ -13,10 +13,10 @@ let initialState: state = {
 
 export default (state = initialState, action: action) => {
   console.info(action)
+  console.info(state)
   switch (action.type) {
     case 'UPDATE_SEARCH': {
-      state.search = action.text
-      return state
+      return { search: action.text, ...state }
     }
   }
   return state

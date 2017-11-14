@@ -12,6 +12,7 @@ interface IAppProps {
 
 class App extends React.Component<IAppProps, any> {
   render() {
+    console.info('renders', this.props.search);
     return (
       <div>
         <SearchBar updateSearchValue={this.props.updateSearchValue} />
@@ -27,9 +28,11 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = (f: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateSearchValue: (str: string) => { }
+    updateSearchValue: (str: string) => {
+      dispatch({ type: 'UPDATE_SEARCH', text: str })
+    }
   }
 }
 
