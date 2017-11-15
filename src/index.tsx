@@ -6,16 +6,17 @@ import createSagaMiddleware from 'redux-saga';
 import { AppContainer } from "react-hot-loader";
 
 import reducer from './reducer';
-import actions from './actions';
+import rootSaga from './actions';
 import App from './App';
 
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   reducer,
+  applyMiddleware(sagaMiddleware)
 )
 
-// sagaMiddleware.run(actions)
+sagaMiddleware.run(rootSaga)
 
 const rootEl = document.getElementById("root");
 

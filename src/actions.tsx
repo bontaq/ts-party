@@ -1,12 +1,23 @@
-import { takeEvery } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { put, takeEvery, all } from 'redux-saga/effects';
 
 
-function* fetchGifs(action: any) {
-  yield "1"
+export function* helloSaga(): any {
+  console.log('hello sagas')
 }
 
-function* mySaga() {
-  yield "1"
+export function* incrementAsync() {
+  yield delay(1000)
+  yield put({ type: 'INCREMENT' })
 }
 
-export default mySaga;
+export function* watchSearchRequest() {
+  yield takeEvery('REQUEST_SEARCH', incrementAsync)
+}
+
+export default function* rootSaga() {
+  yield all([
+    helloSaga(),
+    watchSearchRequest()
+  ])
+}

@@ -1,5 +1,9 @@
 interface state {
   search: string
+  pastSearches: Array<{
+    search: string,
+    responses: Array<string>
+  }>
 }
 
 interface action {
@@ -8,12 +12,12 @@ interface action {
 }
 
 let initialState: state = {
-  search: ""
+  search: "",
+  pastSearches: []
 }
 
 export default (state = initialState, action: action) => {
   console.info(action)
-  console.info(state)
   switch (action.type) {
     case 'UPDATE_SEARCH': {
       return { ...state, search: action.text }
