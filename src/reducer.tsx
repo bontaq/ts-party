@@ -9,6 +9,7 @@ interface state {
 interface action {
   type: string
   text?: string
+  data?: Array<string>
 }
 
 let initialState: state = {
@@ -21,6 +22,9 @@ export default (state = initialState, action: action) => {
   switch (action.type) {
     case 'UPDATE_SEARCH': {
       return { ...state, search: action.text }
+    }
+    case 'SEARCH_SUCCEEDED': {
+      return { ...state, pastSearches: action.data }
     }
   }
   return state

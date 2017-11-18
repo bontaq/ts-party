@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     requestSearch: () => {
       console.info('search requested')
-      dispatch({ type: 'REQUEST_SEARCH' })
+      dispatch({ type: 'SEARCH_REQUESTED' })
     }
   }
 }
