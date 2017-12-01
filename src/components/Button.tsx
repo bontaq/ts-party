@@ -7,11 +7,14 @@ export const Button2: React.StatelessComponent<{
   <button {...props} />
 )
 
-const Button = styled.button`
-  border-radius: 3px;
-  background: linear-gradient(to right, rgb(64, 214, 209), rgb(195, 247, 245));
-  padding: 5px 10px;
+export const Button3 = styled.button`
+  outline: 3px solid green;
+  background-color: white;
+  height: 45px;
+  font-size: 1em;
   border-width: 0px;
+  margin: 4px;
+  padding: 4px;
 `;
 
-export default Button;
+export default Button3;

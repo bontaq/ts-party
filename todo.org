@@ -1,3 +1,7 @@
-* TODO push search into stack
-* TODO display previous searches
-* TODO on click, display results
+* DONE push search into stack
+* DONE display previous searches
+* DONE actually search
+* TODO show trending on initial load
+* TODO make it all look nicer
+* TODO might want to seperate displayed & past searches
+* TODO maybe some tests my dude
