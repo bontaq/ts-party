@@ -1,5 +1,5 @@
 {
-  "name": "wework2",
+  "name": "eden",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,10 +12,12 @@
     "@types/ramda": "^0.25.6",
     "@types/react-redux": "^5.0.12",
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.21.0",
     "ramda": "^0.25.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "superagent": "^3.8.1"
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@types/react": "^16.0.22",
     "@types/react-dom": "^16.0.3",
+    "@types/react-router-dom": "^4.2.4",
     "@types/redux": "^3.6.0",
     "@types/redux-saga": "^0.10.5",
     "@types/superagent": "^3.5.6",

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import PreviousSearches from './components/PreviousSearches';
 import Results from './components/Results';
+
 
 const BaseDiv = styled.div`
   font-family: sans-serif

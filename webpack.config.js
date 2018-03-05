@@ -50,12 +50,16 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
+
+    // for reasons I don't understand, react router paths with params mess this
+    // functionality up
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+//        "react": "React",
+//        "react-dom": "ReactDOM"
     },
     devServer: {
-        hot: true
+        hot: true,
+        historyApiFallback: true
     }
 
 };

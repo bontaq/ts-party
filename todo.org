@@ -1,7 +1,17 @@
-* DONE push search into stack
-* DONE display previous searches
-* DONE actually search
-* TODO show trending on initial load
-* TODO make it all look nicer
-* TODO might want to seperate displayed & past searches
-* TODO maybe some tests my dude
+* Reqs
+* Show list of patients
+* Show list of appointments
+* Patient details page
+
+* Implementation:
+* DONE Add react router
+* DONE Get list of patients displaying
+* DONE Generic table
+* DONE Add patient page
+** DONE Fetch patient by ID
+** DONE Fetch appointments by ID
+** DONE Fetch actions by ID
+** TODO Sort appointments
+* TODO On clicking patient, go to patient details page
+* TODO Add appointment page
+* TODO Add navigation
