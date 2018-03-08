@@ -9,6 +9,10 @@ export async function patients() {
   return request.get(`${API_ROOT}/patients`);
 }
 
+export async function appointments() {
+  return request.get(`${API_ROOT}/appointments?_sort=datetime&_order=desc`);
+}
+
 export async function patient(id: number) {
   return request.get(`${API_ROOT}/patients/${id}`);
 }
@@ -18,7 +22,7 @@ export async function appointmentsByPatient(id: number) {
 }
 
 export async function userActionsByPatient(id: number) {
-  return request.get(`${API_ROOT}/user_actions?patient_id=${id}`)
+  return request.get(`${API_ROOT}/user_actions?patient_id=${id}&action=message`)
 }
 
 export async function trending() {

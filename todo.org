@@ -11,7 +11,9 @@
 ** DONE Fetch patient by ID
 ** DONE Fetch appointments by ID
 ** DONE Fetch actions by ID
-** TODO Sort appointments
+** DONE Sort appointments
 * TODO On clicking patient, go to patient details page
 * TODO Add appointment page
-* TODO Add navigation
+* DONE Add navigation
+* TODO Improve navigation
+* TODO Add test for date sort

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 import PatientsContainer from './PatientsContainer';
 import PatientContainer from './pages/PatientContainer';
+import AppointmentsContainer from './pages/AppointmentsContainer';
 
 const StyledNavItem = styled.h2`
   display: inline-block;
@@ -37,6 +38,7 @@ const Routes = () => (
 
       <Route path="/patients" component={PatientsContainer} />
       <Route path="/patient/:id" component={PatientContainer} />
+      <Route path="/appointments" component={AppointmentsContainer} />
     </div>
   </Router>
 )

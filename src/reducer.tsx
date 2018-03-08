@@ -3,7 +3,7 @@ import { Patient, Appointment, UserAction, PatientPage } from './models';
 import { sortByDateAsc } from './util';
 
 
-interface state {
+export interface State {
   search: string
   displayResults: Array<{ url: string }>
   pastSearches: Array<{
@@ -16,6 +16,9 @@ interface state {
 
   // used by the patient detail view
   patient?: PatientPage
+
+  // used by the appointments page
+  appointments: Array<Appointment>
 }
 
 // this is a bit janky, is there a better way
@@ -28,7 +31,7 @@ interface action {
   userActions?: Array<UserAction>
 }
 
-let initialState: state = {
+let initialState: State = {
   search: "",
   // the idea of using only pastSearches and saying the
   // currently displayed gifs were the head, or latest, of
@@ -37,7 +40,9 @@ let initialState: state = {
   // application) -- hence, displayedResults
   displayResults: [],
   pastSearches: [],
+
   patients: [],
+  appointments: [],
   patient: undefined
 }
 
@@ -48,6 +53,12 @@ export default (state = initialState, action: action) => {
         ...state,
         patients: action.patients
       };
+    }
+    case 'FETCH_APPOINTMENTS_SUCCEEDED': {
+      return {
+        ...state,
+        appointments: action.appointments
+      }
     }
     case 'FETCH_PATIENT_SUCCEEDED': {
       console.info(action)

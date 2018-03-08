@@ -44,7 +44,7 @@ const PatientEl: React.StatelessComponent<{ patient: PatientPage }> = ({ patient
       </div>
       <div>
         <h3>User Engagement</h3>
-        <ul><div>Actions: {patient.userActions.length}</div></ul>
+        <ul><div>Messages: {patient.userActions.length}</div></ul>
       </div>
     </FlexContainer>
   </div>

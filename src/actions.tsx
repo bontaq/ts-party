@@ -1,3 +1,4 @@
+import { Patient } from './models';
 import { put, select, take, fork, takeEvery, takeLatest, all, call } from 'redux-saga/effects';
 import * as R from 'ramda';
 import * as Api from './Api';
@@ -56,6 +57,30 @@ export function* watchPatientsRequest() {
   yield takeEvery('FETCH_PATIENTS', fetchPatients)
 }
 
+export function* fetchAppointments() {
+  const rawAppts = yield call(Api.appointments)
+  const patientIds = rawAppts.body.map((a: any) => a.patient_id)
+
+  const rawPatients = yield all(patientIds.map((p: number) => call(Api.patient, p)))
+  const patientIdLookup =
+    R.reduce((acc, p: { body: { id: string, name: string } }) =>
+      R.assoc(p.body.id, p.body.name, acc)
+      , {}, rawPatients);
+
+  const apptsWithName = R.map((appt: any) =>
+    R.assoc('patient_name', R.prop(appt.patient_id, patientIdLookup), appt)
+  )(rawAppts.body)
+
+  yield put({
+    type: 'FETCH_APPOINTMENTS_SUCCEEDED',
+    appointments: apptsWithName
+  })
+}
+
+export function* watchAppointmentsRequest() {
+  yield takeEvery('FETCH_APPOINTMENTS', fetchAppointments)
+}
+
 export function* fetchPatient(id: number) {
   // run in parallel
   const [patient, appointments, userActions] = yield all([
@@ -94,6 +119,7 @@ export default function* rootSaga() {
     //fork(watchSearchRequest),
     //fork(watchTrendingRequest),
     fork(watchPatientsRequest),
-    fork(watchPatientRequest)
+    fork(watchAppointmentsRequest),
+    fork(watchPatientRequest),
   ])
 }
