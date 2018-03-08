@@ -1,6 +1,7 @@
 ** How long did you spend?
 
-About 12 hours.  A couple hours were spent fighting typescript.
+About 12 hours.  A couple hours were spent fighting typescript / getting live
+reload working.
 
 ** API limitations
 
@@ -26,7 +27,7 @@ You see that "clear_patient" action?  That stuff only ever got toughter.  Ideall
 the patient page could be thrown into a modal with no trouble to decrease
 user time (why make them go to a new page?).
 
-Another would be more exact routes.  It's ok, here, but you'd need
+Another improvement would be more exact routes.  It's ok, here, but you'd need
 something like appointment/note/${id} level linking -- it's a huge waste of
 ops time to lookup people.
 
@@ -51,6 +52,7 @@ after work.  The only improvement I would offer is make it a little smaller.
   formatting
 - It got me thinking that if you just did default states of [] and only
   mapped over everything, you might have a very fine program ala scala
+  or haskell
 - This really reminded me how much typing is involved in the full
   Business Class experience
 - Hope y'all think it's neat -- it's a real pain to setup hot-reload TS so
