@@ -3,7 +3,6 @@ import { put, select, take, fork, takeEvery, takeLatest, all, call } from 'redux
 import * as R from 'ramda';
 import * as Api from './Api';
 
-import { getResults } from './selectors';
 import { keyframes } from 'styled-components';
 
 // quick rundown of the effect calls:

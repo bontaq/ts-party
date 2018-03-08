@@ -12,7 +12,11 @@ then navigate to localhost:8080/patients (Or just click on
 patients / appointments)
 
 TBH I'm not sure why react router isn't redirecting from /, although
-you can see what I attempted to do in Routes.tsx
+you can see what I attempted to do in Routes.tsx.  Update:
+No seriously, react-router isn't working for a damn unless you
+click through the links.  I'm not sure why I trusted them this time
+around, they've changed APIs 4 times in less years so I would recommned
+not using them for routing.
 
 
 Anyways, how to read this lil code base:
