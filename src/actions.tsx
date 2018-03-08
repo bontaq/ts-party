@@ -15,37 +15,6 @@ import { keyframes } from 'styled-components';
 // - all -- somewhat like Promise.all,
 //          those these promises don't finish
 
-//export function* fetchData(term: string) {
-//  try {
-//    let results = yield select(getResults, term)
-//    if (!results) {
-//      const rawResults = yield call(Api.search, term)
-//      const imageData = R.map(R.path(['images', 'downsized']),
-//        rawResults.body.data);
-//      results = {
-//        responses: imageData,
-//        search: term
-//      }
-//    }
-//    yield put({
-//      type: 'SEARCH_SUCCEEDED',
-//      ...results
-//    })
-//  } catch (error) {
-//    yield put({ type: 'SEARCH_FAILED' })
-//  }
-//}
-//
-//export function* fetchTrending() {
-//  const rawResults = yield call(Api.trending)
-//  const imageData = R.map(R.path(['images', 'downsized']),
-//    rawResults.body.data);
-//  yield put({
-//    type: 'TRENDING_SUCCEEDED',
-//    responses: imageData
-//  })
-//}
-
 export function* fetchPatients() {
   const rawResults = yield call(Api.patients)
   yield put({
@@ -63,12 +32,13 @@ export function* fetchAppointments() {
   const patientIds = rawAppts.body.map((a: any) => a.patient_id)
 
   const rawPatients = yield all(patientIds.map((p: number) => call(Api.patient, p)))
-  const patientIdLookup: { [key: string]: string } =
+  // TODO: fix these types
+  const patientIdLookup: any =
     R.reduce((acc, p: { body: { id: string, name: string } }) =>
       R.assoc(p.body.id, p.body.name, acc)
       , {}, rawPatients);
 
-  const apptsWithName = R.map((appt: { patient_id: string }) =>
+  const apptsWithName = R.map((appt: any) =>
     R.assoc('patient_name', R.prop(appt.patient_id, patientIdLookup), appt)
   )(rawAppts.body)
 
@@ -104,21 +74,8 @@ export function* watchPatientRequest() {
   }
 }
 
-//export function* watchSearchRequest() {
-//  while (true) {
-//    const { term } = yield take('SEARCH_REQUESTED')
-//    yield fork(fetchData, term)
-//  }
-//}
-//
-//export function* watchTrendingRequest() {
-//  yield takeEvery('TRENDING_REQUESTED', fetchTrending)
-//}
-
 export default function* rootSaga() {
   yield all([
-    //fork(watchSearchRequest),
-    //fork(watchTrendingRequest),
     fork(watchPatientsRequest),
     fork(watchAppointmentsRequest),
     fork(watchPatientRequest),

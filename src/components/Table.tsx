@@ -42,7 +42,7 @@ class Table extends React.Component<ITableProps, {}> {
   render() {
     const width = 90 / this.props.columnNames.length;
     const header = this.props.columnNames.map(i =>
-      <StyledRowItem width={width}>{i}</StyledRowItem>
+      <StyledRowItem key={i} width={width}>{i}</StyledRowItem>
     );
     const rows = this.props.data.map(d => (
       <Row onClick={() => this.props.onClick && this.props.onClick(d)}>

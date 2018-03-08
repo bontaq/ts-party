@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "test": "jest",
+    "build": "webpack",
+    "start:dev": "npm install && jest && webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/ramda": "^0.25.6",
-    "@types/react-redux": "^5.0.12",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.21.0",
     "ramda": "^0.25.0",
@@ -23,6 +24,8 @@
     "superagent": "^3.8.1"
   },
   "devDependencies": {
+    "@types/ramda": "^0.25.6",
+    "@types/react-redux": "^5.0.12",
     "@types/jest": "^22.2.0",
     "@types/react": "^16.0.22",
     "@types/react-dom": "^16.0.3",

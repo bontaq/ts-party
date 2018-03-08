@@ -1,0 +1,59 @@
+** How long did you spend?
+
+About 12 hours.  A couple hours were spent fighting typescript.
+
+** API limitations
+
+The API I didn't find limiting, but improvements could be made especially around
+getting patient names from the appointment endpoint.  Ideally that endpoint
+would be expanded or customized to include their name so it's not banging
+out a bunching of requests and joining up info on the front-end.
+
+** Was React good?
+
+You know, after building this boy out, I'd be extremely interested in what it
+would look like built with clojurescript -- which I'd be happy to do as an
+experiment.  Well, or ReasonML.  I built this to the standards of Quartet towards
+the end with some improvements.  It's extremely verbose, and honestly typing
+speed becomes a blocker.  This style of programming seemed necessary because
+anyone could look at any of these modules and start work on it immediately,
+as they're so detached.  You'll also note some escape hatches from typescript
+taken, which is an honest combination of writing correct programs is hard and
+typescript doesn't have incredible inference.
+
+An important improvement to this would be splitting out reducers per page.
+You see that "clear_patient" action?  That stuff only ever got toughter.  Ideally
+the patient page could be thrown into a modal with no trouble to decrease
+user time (why make them go to a new page?).
+
+Another would be more exact routes.  It's ok, here, but you'd need
+something like appointment/note/${id} level linking -- it's a huge waste of
+ops time to lookup people.
+
+Redux-saga I think is pretty peculiar, but I tried it out for this project.
+I think I can dig it now.  It seems if you really, really, buy into
+redux-saga as your effects model, you can do all kinds of wild stuff.
+
+I'd say some of the ugliness and type-checking-loss is from me being new to that
+stuff -- seems there's some elegant examples online.
+
+** Did you LOVE this challenge?
+
+It's a good challenge, personally I looked forward to putting some work on it
+after work.  The only improvement I would offer is make it a little smaller.
+
+** Comments
+
+- I went for a black and white thing to because I figure'd it be fun (UI
+  not recommended)
+- That the UI doesn't indicate your current page annoys me a lot
+- There wasn't really much testable, so I did the reasonable hit of date
+  formatting
+- It got me thinking that if you just did default states of [] and only
+  mapped over everything, you might have a very fine program ala scala
+- This really reminded me how much typing is involved in the full
+  Business Class experience
+- Hope y'all think it's neat -- it's a real pain to setup hot-reload TS so
+  totally grab from this if yinz intend on doing TS
+  - Oh, to add, TS isn't all bad -- it caught a couple bugs and made
+    some refactoring simpler.

@@ -2,12 +2,13 @@ import * as React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Redirect,
   Link,
   Switch
 } from 'react-router-dom';
 import styled from 'styled-components';
 
-import PatientsContainer from './PatientsContainer';
+import PatientsContainer from './pages/PatientsContainer';
 import PatientContainer from './pages/PatientContainer';
 import AppointmentsContainer from './pages/AppointmentsContainer';
 
@@ -43,9 +44,12 @@ const Routes = () => (
         </StyledLink>
       </StyledNavBar>
 
-      <Route path="/patients" component={PatientsContainer} />
-      <Route path="/patient/:id" component={PatientContainer} />
-      <Route path="/appointments" component={AppointmentsContainer} />
+      <Switch>
+        <Route path="/" render={() => (<Redirect to="/patients/" />)} />
+        <Route path="/patients" component={PatientsContainer} />
+        <Route path="/patient/:id" component={PatientContainer} />
+        <Route path="/appointments" component={AppointmentsContainer} />
+      </Switch>
     </div>
   </Router>
 )

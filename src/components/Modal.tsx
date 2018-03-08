@@ -38,6 +38,10 @@ const Close = styled.span`
   }
 `
 
+const ChildrenContainer = styled.span`
+  margin: 10px;
+`
+
 class Modal extends React.Component<IModalProps, {}> {
   render() {
     return (
@@ -46,7 +50,9 @@ class Modal extends React.Component<IModalProps, {}> {
           <Close onClick={this.props.handleClose}>Close</Close>
           <HeaderText>{this.props.header}</HeaderText>
         </Header>
-        {this.props.children}
+        <ChildrenContainer>
+          {this.props.children}
+        </ChildrenContainer>
       </ModalContainer>
     )
   }
