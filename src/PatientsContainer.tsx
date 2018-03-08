@@ -6,6 +6,8 @@ import Table from './components/Table';
 interface IPatientsContainerProps {
   fetchPatients: () => null
   patients: Array<Patient>
+  // weird quirk
+  history: { push: (a: string) => void }
 }
 
 const patientEl = (patient: Patient) => (
@@ -17,6 +19,10 @@ class PatientsContainer extends React.Component<IPatientsContainerProps, any> {
     this.props.fetchPatients()
   }
 
+  handleClick = (data: any) => {
+    this.props.history.push(`/patient/${data[0]}`)
+  }
+
   render() {
     const patients = this.props.patients.map(
       ({ name, company, id }) => [id, name, company]
@@ -26,6 +32,7 @@ class PatientsContainer extends React.Component<IPatientsContainerProps, any> {
         <Table
           columnNames={["Id", "Name", "Company"]}
           data={patients}
+          onClick={(data) => this.handleClick(data)}
         />
       </div>
     )

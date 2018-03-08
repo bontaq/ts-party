@@ -5,7 +5,7 @@ import * as R from 'ramda';
 interface ITableProps {
   data: Array<Array<any>>
   columnNames: Array<string>
-  onClick?: (a: any) => null
+  onClick?: (a: any) => void
 }
 
 const Container = styled.div`
@@ -45,9 +45,9 @@ class Table extends React.Component<ITableProps, {}> {
       <StyledRowItem width={width}>{i}</StyledRowItem>
     );
     const rows = this.props.data.map(d => (
-      <Row>
+      <Row onClick={() => this.props.onClick && this.props.onClick(d)}>
         {d.map(i => <StyledRowItem width={width}>{i}</StyledRowItem>)}
-      </Row>
+      </Row >
     ));
     return (
       <Container>

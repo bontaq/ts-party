@@ -19,7 +19,7 @@ const ApptEl: React.StatelessComponent<{ appt: Appointment }> = ({ appt }) => {
   const scheduledFor = formatDate(appt.datetime);
   const createdAt = formatDate(appt.created_at);
   return (
-    <div>
+    <div key={`appt-${appt.id}`}>
       <p>{appt.note}</p>
       <StyledApptTime>
         <SmallNote>Scheduled Time</SmallNote>
@@ -67,6 +67,7 @@ class PatientContainer extends React.Component<IPatientContainerProps, any> {
   }
 
   componentWillUnmount() {
+    // necessary to avoid a flash of the last patient
     this.props.clearPatient()
   }
 

@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import * as Api from './Api';
 
 import { getResults } from './selectors';
+import { keyframes } from 'styled-components';
 
 // quick rundown of the effect calls:
 // - fork -- asyncronous / non-blocking call of fn
@@ -62,12 +63,12 @@ export function* fetchAppointments() {
   const patientIds = rawAppts.body.map((a: any) => a.patient_id)
 
   const rawPatients = yield all(patientIds.map((p: number) => call(Api.patient, p)))
-  const patientIdLookup =
+  const patientIdLookup: { [key: string]: string } =
     R.reduce((acc, p: { body: { id: string, name: string } }) =>
       R.assoc(p.body.id, p.body.name, acc)
       , {}, rawPatients);
 
-  const apptsWithName = R.map((appt: any) =>
+  const apptsWithName = R.map((appt: { patient_id: string }) =>
     R.assoc('patient_name', R.prop(appt.patient_id, patientIdLookup), appt)
   )(rawAppts.body)
 

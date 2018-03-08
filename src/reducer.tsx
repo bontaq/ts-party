@@ -4,13 +4,6 @@ import { sortByDateAsc } from './util';
 
 
 export interface State {
-  search: string
-  displayResults: Array<{ url: string }>
-  pastSearches: Array<{
-    search: string,
-    responses: Array<{ url: string }>
-  }>
-
   // used by the patient list page
   patients: Array<Patient>
 
@@ -32,15 +25,6 @@ interface action {
 }
 
 let initialState: State = {
-  search: "",
-  // the idea of using only pastSearches and saying the
-  // currently displayed gifs were the head, or latest, of
-  // pastSearches was cute, but it gets awkward with showing
-  // trending (or if we wanted to continue expanding this
-  // application) -- hence, displayedResults
-  displayResults: [],
-  pastSearches: [],
-
   patients: [],
   appointments: [],
   patient: undefined
@@ -61,7 +45,6 @@ export default (state = initialState, action: action) => {
       }
     }
     case 'FETCH_PATIENT_SUCCEEDED': {
-      console.info(action)
       // recombine into our representation of patient,
       const appointments = action.appointments || [];
       const sortedAppointments = sortByDateAsc('datetime', appointments);
@@ -75,33 +58,13 @@ export default (state = initialState, action: action) => {
         }
       }
     }
-    //    case 'UPDATE_SEARCH': {
-    //      return { ...state, search: action.text }
-    //    }
-    //    case 'TRENDING_SUCCEEDED': {
-    //      const displayResults = action.responses
-    //      return {
-    //        ...state,
-    //        displayResults
-    //      }
-    //    }
-    //    case 'SEARCH_SUCCEEDED': {
-    //      const search = {
-    //        responses: action.responses,
-    //        search: action.search
-    //      }
-    //      const pastSearches = R.prepend(
-    //        search,
-    //        state.pastSearches)
-    //      console.info(search)
-    //      const displayResults = action.responses
-    //      return {
-    //        ...state,
-    //        search: action.search,
-    //        pastSearches,
-    //        displayResults
-    //      }
-    //    }
+    // necessary to avoid a flash of the last patient
+    case 'CLEAR_PATIENT': {
+      return {
+        ...state,
+        patient: undefined
+      }
+    }
   }
   return state
 }
