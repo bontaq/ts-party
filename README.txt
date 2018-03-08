@@ -4,7 +4,7 @@ If you don't, please run:
 npm install web-dev-server --save-dev
 
 then run:
-npm start:dev
+npm run start:dev
 
 in the root directory of this project (hope this works)
 
