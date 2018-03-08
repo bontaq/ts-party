@@ -11,7 +11,7 @@ export const formatDate = (date: string): Maybe<string> => {
   if (m.isValid() !== true) {
     return null;
   }
-  return m.format("ddd, MMM Do, H:mma, YYYY")
+  return m.format("ddd, MMM Do, h:mma, YYYY")
 }
 
 export const sortByDateAsc = (field: string, arr: Array<{}>) =>
