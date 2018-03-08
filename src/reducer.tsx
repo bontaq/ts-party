@@ -66,5 +66,6 @@ export default (state = initialState, action: action) => {
       }
     }
   }
+  // "safety"
   return state
 }

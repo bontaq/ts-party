@@ -15,12 +15,16 @@ const SmallNote = styled.span`
   margin-right: 8px;
 `
 
+const MessageP = styled.p`
+  width: 80%;
+`
+
 const ApptEl: React.StatelessComponent<{ appt: Appointment }> = ({ appt }) => {
   const scheduledFor = formatDate(appt.datetime);
   const createdAt = formatDate(appt.created_at);
   return (
     <div key={`appt-${appt.id}`}>
-      <p>{appt.note}</p>
+      <MessageP>{appt.note}</MessageP>
       <StyledApptTime>
         <SmallNote>Scheduled Time</SmallNote>
         {scheduledFor ? scheduledFor : 'Unknown date format'}
@@ -29,25 +33,34 @@ const ApptEl: React.StatelessComponent<{ appt: Appointment }> = ({ appt }) => {
   )
 }
 
-const FlexContainer = styled.div`
+const ColumnContainer = styled.div`
+  width: 100%;
   display: flex;
 `
 
+const Column = styled.div`
+  width: 48%;
+`
+
+const StyledPatientContainer = styled.div`
+  margin: 40px;
+`
+
 const PatientEl: React.StatelessComponent<{ patient: PatientPage }> = ({ patient }) => (
-  <div>
+  <StyledPatientContainer>
     <h2>{patient.name}</h2>
     <p>{patient.company}</p>
-    <FlexContainer>
-      <div>
+    <ColumnContainer>
+      <Column>
         <h3>Appointments</h3>
         <ul>{patient.appointments.map(a => <ApptEl appt={a} />)}</ul>
-      </div>
-      <div>
+      </Column>
+      <Column>
         <h3>User Engagement</h3>
         <ul><div>Messages: {patient.userActions.length}</div></ul>
-      </div>
-    </FlexContainer>
-  </div>
+      </Column>
+    </ColumnContainer>
+  </StyledPatientContainer>
 )
 
 interface IPatientContainerProps {
