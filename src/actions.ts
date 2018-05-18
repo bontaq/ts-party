@@ -1,9 +1,7 @@
 import { Patient } from './models';
 import { put, select, take, fork, takeEvery, takeLatest, all, call } from 'redux-saga/effects';
 import * as R from 'ramda';
-import * as Api from './Api';
-
-import { keyframes } from 'styled-components';
+import * as Api from './api';
 
 // quick rundown of the effect calls:
 // - fork -- asyncronous / non-blocking call of fn
