@@ -7,7 +7,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test": "jest",
     "build": "webpack",
-    "start:dev": "npm install && jest && webpack-dev-server"
+    "start:dev": "npm install && jest && webpack && webpack-dev-server"
   },
   "author": "",
   "license": "ISC",

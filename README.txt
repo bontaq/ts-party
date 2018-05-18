@@ -6,7 +6,7 @@ npm install web-dev-server
 then run:
 npm run start:dev
 
-in the root directory of this project (hope this works)
+in the root directory of this project
 
 then navigate to localhost:8080/patients (Or just click on
 patients / appointments)

@@ -44,7 +44,7 @@ const Routes = () => (
         </StyledLink>
       </StyledNavBar>
 
-      <Redirect from="/" to="/patients" />
+      <Route path="/" component={PatientsContainer} />
       <Route path="/patients" component={PatientsContainer} />
       <Route path="/patient/:id" component={PatientContainer} />
       <Route path="/appointments" component={AppointmentsContainer} />
