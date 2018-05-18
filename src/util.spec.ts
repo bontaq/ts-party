@@ -1,4 +1,4 @@
-import { formatDate, sortByDateAsc } from '../util'
+import { formatDate, sortByDateAsc } from './util'
 
 describe('formatDate', () => {
   it('works with undefined', () => {
