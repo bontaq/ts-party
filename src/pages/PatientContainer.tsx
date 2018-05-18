@@ -63,18 +63,18 @@ const PatientEl: React.StatelessComponent<{ patient: PatientPage }> = ({ patient
   </StyledPatientContainer>
 )
 
-interface IPatientContainerProps {
+type Props = {
   match: {
     params: {
       id: number
     }
   }
   patient: PatientPage | undefined
-  fetchPatient: (id: number) => null
-  clearPatient: () => null
+  fetchPatient: (id: number) => void
+  clearPatient: () => void
 }
 
-class PatientContainer extends React.Component<IPatientContainerProps, any> {
+class PatientContainer extends React.Component<Props, any> {
   componentDidMount() {
     this.props.fetchPatient(this.props.match.params.id)
   }
@@ -101,21 +101,17 @@ class PatientContainer extends React.Component<IPatientContainerProps, any> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    patient: state.patient
-  }
-}
+const mapStateToProps = (state: any) => ({
+  patient: state.patient
+})
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    fetchPatient: (id: number) => {
-      dispatch({ type: 'FETCH_PATIENT', id })
-    },
-    clearPatient: () => {
-      dispatch({ type: 'CLEAR_PATIENT' })
-    }
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchPatient: (id: number) => {
+    dispatch({ type: 'FETCH_PATIENT', id })
+  },
+  clearPatient: () => {
+    dispatch({ type: 'CLEAR_PATIENT' })
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientContainer);
