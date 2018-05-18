@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { State as GlobalState } from '../reducer';
 import { Patient } from '../models';
 import Table from '../components/Table';
 
-interface IPatientsContainerProps {
+type Props = {
   fetchPatients: () => null
   patients: Array<Patient>
   // weird quirk
@@ -14,13 +15,12 @@ const patientEl = (patient: Patient) => (
   <li>{patient.name}</li>
 )
 
-class PatientsContainer extends React.Component<IPatientsContainerProps, any> {
+class PatientsContainer extends React.Component<Props, {}> {
   componentDidMount() {
-    console.info('hey?')
     this.props.fetchPatients()
   }
 
-  handleClick = (data: any) => {
+  handleClick = (data: [string, string, string]) => {
     this.props.history.push(`/patient/${data[0]}`)
   }
 
@@ -40,18 +40,14 @@ class PatientsContainer extends React.Component<IPatientsContainerProps, any> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    patients: state.patients
-  }
-}
+const mapStateToProps = (state: GlobalState) => ({
+  patients: state.patients
+})
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    fetchPatients: () => {
-      dispatch({ type: 'FETCH_PATIENTS' })
-    }
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchPatients: () => {
+    dispatch({ type: 'FETCH_PATIENTS' })
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientsContainer);
