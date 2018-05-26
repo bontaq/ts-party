@@ -1,0 +1,60 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ian/.cabal/bin:/home/ian/.local/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  6.11.4
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "reason",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "bsb -make-world",
+      "start": "bsb -make-world -w",
+      "clean": "bsb -clean-world",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "webpack": "webpack -w",
+      "webpack:production": "NODE_ENV=production webpack"
+    },
+    "keywords": [
+      "BuckleScript"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "react": "^16.2.0",
+      "react-dom": "^16.2.0",
+      "reason-react": ">=0.4.0"
+    },
+    "devDependencies": {
+      "bs-platform": "^3.1.4",
+      "webpack": "^4.0.1",
+      "webpack-cli": "^2.0.10"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Found incompatible module
+      at MessageError.Error (native)
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at checkOne (/usr/local/lib/node_modules/yarn/lib/cli.js:62444:11)
+      at Object.check (/usr/local/lib/node_modules/yarn/lib/cli.js:62463:5)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:22803:73
+      at next (native)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
